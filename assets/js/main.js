@@ -13,11 +13,16 @@ const app = {
     setup : function() {
         // Botón comenzar
         $("#comenzar").click(function(){
+            app.preguntaActual += 1;
             let inicio = $("#inicio").addClass("no-display");
-            $("#pregunta1").removeClass("no-display");
+            app.mostrarPregunta(app.preguntaActual);
         });
+        $().click()
     },
-    secciones: ["#pregunta1", "#pregunta2", "#pregunta3", "#pregunta4", "#pregunta5"]
+    secciones: ["0", "pregunta1", "pregunta2", "pregunta3", "pregunta4", "pregunta5"],
+    mostrarPregunta : function(preguntaActual){
+        $(`#${app.secciones[preguntaActual]}`).removeClass("no-display");
+    }
 }
 
 // Función constructura
