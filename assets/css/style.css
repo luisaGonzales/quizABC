@@ -61,11 +61,13 @@ body {
 #atras{
     position: absolute;
     left: 300%;
+    z-index: 7;
 }
 
 #adelante{
     position: absolute;
     left: 340%;
+    z-index: 7;
 }
 
 /* Botón */

@@ -118,6 +118,10 @@ const app = {
     },
     volver : function(){
         alert("chi");
+        $(`#${app.secciones[app.preguntaActual]}`).addClass("no-display");
+        app.preguntaActual -= 1;
+        $(`#${app.secciones[app.preguntaActual]}`).removeClass("no-display");
+        
         console.log(app.preguntaActual);
     }
 }
