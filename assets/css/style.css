@@ -57,14 +57,15 @@ body {
     color: white;
 }
 
-#informacion:hover .fa-circle {
-    background-color: #e00079;
-    /* ? */
+
+#atras{
+    position: absolute;
+    left: 300%;
 }
 
-.flechas{
+#adelante{
     position: absolute;
-    
+    left: 340%;
 }
 
 /* Botón */
@@ -126,10 +127,6 @@ body {
 .progress-bar{
     background-color: #423f5c !important;
 }
-
-
-
-
 /* Pregunta */
 
 .pregunta {
