@@ -16,7 +16,8 @@ const app = {
             app.preguntaActual += 1;
             let inicio = $("#inicio").addClass("no-display");
             console.log(inicio);
-            crearQuiz(app.preguntaActual);
+            ponerImagen(app.preguntaActual);
+            ponerEstado(app.preguntaActual);
         });
     },
     imagenes:["", "assets/img/plane.svg", "assets/img/ship.svg", "assets/img/bycicle.svg", "assets/img/bus.svg","assets/img/car.svg", "assets/img/truck.svg"],
@@ -33,7 +34,7 @@ function Pregunta (numero, pregunta, alternativas, correcta) {
     }
 }
 
-function crearQuiz (num){    
+function ponerImagen (num){    
     let sectionImg = $("#imagen");
     let imagen = $("<img>", {
       "src": `${app.imagenes[num]}`,
@@ -41,10 +42,11 @@ function crearQuiz (num){
     sectionImg.append(imagen);
 }
 
-
-
-
-
+function ponerEstado (num){
+    let divEstado = $("#estado");
+    let estado = `${num} de 5 preguntas contestadas`
+    divEstado.append(estado);
+}
 
 $(document).ready(app.setup);
 
