@@ -40,6 +40,7 @@ const app = {
         app.preguntaActual += 1;
         $(`#${app.secciones[app.preguntaActual]}`).removeClass("no-display");
         if ($("#enviarRespuestas").hasClass("no-display") == false) {
+            $("#todasRespuestas").remove();
             app.enviarRespuestas();
         };
     },
