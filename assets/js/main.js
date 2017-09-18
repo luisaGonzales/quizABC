@@ -22,7 +22,7 @@ const app = {
         });
         // Botón Enviar
         $("#enviar").click(function () {
-            mostrarResumen();
+            app.mostrarResumen();
         });
     },
     mostrarPregunta: function (sgtPregunta) {
@@ -34,8 +34,72 @@ const app = {
         app.preguntaActual += 1;
         $(`#${app.secciones[app.preguntaActual]}`).removeClass("no-display");
         if ($("#enviarRespuestas").hasClass("no-display") == false) {
-            enviarRespuestas();
+            app.enviarRespuestas();
         };
+    },
+    mostrarResumen: function () {
+        // Eliminamos la sección visible
+        $("#enviarRespuestas").addClass("no-display");
+        $("#resumenFinal").removeClass("no-display");
+        let tituloResumen = $("#tituloResumen");
+        let contar = 0;
+        let text = "";
+        for (var i = 0; i < app.respuestas.length; i++) {
+            if (app.respuestas[i][1] == app.correctas[i]) {
+                console.log("sip");
+                contar++;
+            }
+        }
+        if(contar == app.respuestas.length){
+            text = "5 de 5 correctas!!!"
+        } else {
+            text = `Oops ... ${contar} de 5 correctas!`
+        }
+        let titulo = (`<h1 class='titulo'>${text}</h1>`);
+        // Agregamos el resumen
+        let divResumen = $("#resumen");
+        let resumen = "";
+
+        if (app.respuestas[0][1] == app.correctas[0]) {
+            resumen += `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta1.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>`
+        } else {
+            resumen += `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta1.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta1.opciones.correcta}</span></strong></div>`
+        }
+        if (app.respuestas[1][1] == app.correctas[1]) {
+            resumen += `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta2.numero}. </strong>${app.preguntas.pregunta2.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta2.opciones.alternativas[app.respuestas[1][1]]}. </strong></div>`
+        } else {
+            resumen += `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta2.numero}. </strong>${app.preguntas.pregunta2.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta2.opciones.alternativas[app.respuestas[1][1]]}.</s><span>${app.preguntas.pregunta2.opciones.correcta}</span></strong></div>`
+        }
+        if (app.respuestas[2][1] == app.correctas[2]) {
+            resumen += `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta3.numero}. </strong>${app.preguntas.pregunta3.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta3.opciones.alternativas[app.respuestas[2][1]]}. </strong></div>`
+        } else {
+            resumen += `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta3.numero}. </strong>${app.preguntas.pregunta3.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta3.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta3.opciones.correcta}</span></strong></div>`
+        }
+        if (app.respuestas[3][1] == app.correctas[3]) {
+            resumen += `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta4.numero}. </strong>${app.preguntas.pregunta4.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta4.opciones.alternativas[app.respuestas[3][1]]}. </strong></div>`
+        } else {
+            resumen += `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta4.numero}. </strong>${app.preguntas.pregunta4.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta4.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta4.opciones.correcta}</span></strong></div>`
+        }
+        if (app.respuestas[4][1] == app.correctas[4]) {
+            resumen += `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta5.numero}. </strong>${app.preguntas.pregunta5.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta5.opciones.alternativas[app.respuestas[4][1]]}. </strong></div>`
+        } else {
+            resumen += `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta5.numero}. </strong>${app.preguntas.pregunta5.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta5.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta5.opciones.correcta}</span></strong></div>`
+        }
+
+        tituloResumen.append(titulo);
+        divResumen.append(resumen);
+    },
+    enviarRespuestas: function () {
+        let divRespuestas = $(`#respuestas`);
+        let respuestas =
+            (` 
+            <div id="resp1"> <strong>${app.preguntas.pregunta1.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
+            <div id="resp2"> <strong>${app.preguntas.pregunta2.numero}. </strong>${app.preguntas.pregunta2.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta2.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
+            <div id="resp3"> <strong>${app.preguntas.pregunta3.numero}. </strong>${app.preguntas.pregunta3.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta3.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
+            <div id="resp4"> <strong>${app.preguntas.pregunta4.numero}. </strong>${app.preguntas.pregunta4.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta4.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
+            <div id="resp5"> <strong>${app.preguntas.pregunta5.numero}. </strong>${app.preguntas.pregunta5.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta5.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
+            `);
+        divRespuestas.append(respuestas);
     },
 }
 
@@ -57,57 +121,5 @@ function respuestaMarcada() {
     });
 }
 
-function enviarRespuestas() {
-    let divRespuestas = $(`#respuestas`);
-    let respuestas =
-        (` 
-        <div id="resp1"> <strong>${app.preguntas.pregunta1.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
-        <div id="resp2"> <strong>${app.preguntas.pregunta2.numero}. </strong>${app.preguntas.pregunta2.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta2.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
-        <div id="resp3"> <strong>${app.preguntas.pregunta3.numero}. </strong>${app.preguntas.pregunta3.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta3.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
-        <div id="resp4"> <strong>${app.preguntas.pregunta4.numero}. </strong>${app.preguntas.pregunta4.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta4.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
-        <div id="resp5"> <strong>${app.preguntas.pregunta5.numero}. </strong>${app.preguntas.pregunta5.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta5.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>\ <br>
-        `);
-    divRespuestas.append(respuestas);
-}
-
-function mostrarResumen() {
-    $("#enviarRespuestas").addClass("no-display");
-    $("#resumenFinal").removeClass("no-display");
-
-    let tituloResumen = $("#tituloResumen");
-    let titulo = ("<h1 class='titulo'>Oops !</h1>");
-    
-    let divResumen = $("#resumen");
-    let resumen = "";
-
-    if (app.respuestas[0][1] == app.correctas[0]) {
-        resumen +=  `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta1.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}. </strong></div>`
-    } else {
-        resumen +=  `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta1.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta1.opciones.correcta}</span></strong></div>`
-    }
-    if (app.respuestas[1][1] == app.correctas[1]) {
-        resumen +=  `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta2.numero}. </strong>${app.preguntas.pregunta2.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta2.opciones.alternativas[app.respuestas[1][1]]}. </strong></div>`
-    } else {
-        resumen +=  `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta2.numero}. </strong>${app.preguntas.pregunta2.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta2.opciones.alternativas[app.respuestas[1][1]]}.</s><span>${app.preguntas.pregunta2.opciones.correcta}</span></strong></div>`
-    }
-    if (app.respuestas[2][1] == app.correctas[2]) {
-        resumen +=  `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta3.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[2][1]]}. </strong></div>`
-    } else {
-        resumen +=  `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta3.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta3.opciones.correcta}</span></strong></div>`
-    }
-    if (app.respuestas[3][1] == app.correctas[3]) {
-        resumen +=  `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta4.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[3][1]]}. </strong></div>`
-    } else {
-        resumen +=  `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta4.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta4.opciones.correcta}</span></strong></div>`
-    }
-    if (app.respuestas[4][1] == app.correctas[4]) {
-        resumen +=  `<div id="resp1" class="correcta"> <strong>${app.preguntas.pregunta5.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[4][1]]}. </strong></div>`
-    } else {
-        resumen +=  `<div id="resp1" class="incorrecta"> <strong>${app.preguntas.pregunta5.numero}. </strong>${app.preguntas.pregunta1.pregunta} <br><div class="text-center"> <strong><s> ${app.preguntas.pregunta1.opciones.alternativas[app.respuestas[0][1]]}.</s><span>${app.preguntas.pregunta5.opciones.correcta}</span></strong></div>`
-    }
-
-    tituloResumen.append(titulo);
-    divResumen.append(resumen);
-}
-
 $(document).ready(app.setup);
+
