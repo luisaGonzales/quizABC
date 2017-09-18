@@ -199,6 +199,13 @@ body {
     padding: 5vw;
 }
 
+.correcta {
+    color: green;
+}
+
+.incorrecta{
+    color: red;
+}
 
 
 
