@@ -7,6 +7,58 @@
 
 /* Estilo General */
 *{
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Ubuntu', sans-serif;
 }
 
+/* Cuerpo */
+body{
+    background-color: #fff3ec;
+    color: #423f5c;
+}
+
+/* Bienvenida */
+
+#inicio{
+    padding-top: 15%;
+}
+
+#inicio h1{
+    font-weight: 700;
+}
+
+/* Icono de información */
+
+#informacion{
+    position: absolute;
+    top: 4%;
+    left: 2%;
+}
+
+#informacion .fa-circle {
+    color: #fc2088;   
+}
+
+#informacion .fa-info-circle{
+    color: white;
+}
+
+#informacion:hover .fa-circle {
+    background-color: #e00079 ;
+    /* ? */
+}
+
+/* Botón */
+.btn-default{
+    color: white !important;
+    background-color: #423f5c !important;
+    font-weight: bold;
+}
+
+.btn-lg{
+    width: 50%;
+}
+
+#comenzar:hover{
+    background-color: #ccc9d5 !important;
+    color: #423f5c !important; 
+}
