@@ -24,9 +24,12 @@ const app = {
         $("#enviar").click(function () {
             app.mostrarResumen();
         });
-        $("#nuevamente").click(function(){
+        $("#nuevamente").click(function () {
             app.nuevoJuego();
-        })
+        });
+        $("atras").click(function(){
+            app.volver();
+        });
     },
     mostrarPregunta: function (sgtPregunta) {
         $(`#${app.secciones[sgtPregunta]}`).removeClass("no-display");
@@ -52,7 +55,7 @@ const app = {
                 contar++;
             }
         }
-        if(contar == app.respuestas.length){
+        if (contar == app.respuestas.length) {
             text = "5 de 5 correctas!!!"
         } else {
             text = `Oops ... ${contar} de 5 correctas!`
@@ -103,7 +106,7 @@ const app = {
             </div>`);
         divRespuestas.append(respuestas);
     },
-    nuevoJuego: function(){
+    nuevoJuego: function () {
         $("#resumenFinal").addClass("no-display");
         app.preguntaActual = 1;
         app.mostrarPregunta(app.preguntaActual);
@@ -112,6 +115,10 @@ const app = {
         $("#resumenCompleto").remove();
         $("#resumenTitulo").remove();
 
+    },
+    volver : function(){
+        alert("chi");
+        console.log(app.preguntaActual);
     }
 }
 
@@ -134,4 +141,3 @@ function respuestaMarcada() {
 }
 
 $(document).ready(app.setup);
-
