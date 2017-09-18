@@ -14,18 +14,13 @@ const app = {
         // Botón comenzar
         $("#comenzar").click(function(){
             let inicio = $("#inicio").addClass("no-display");
-            console.log(inicio);
-            // ponerImagen(app.preguntaActual);
-            // ponerEstado(app.preguntaActual);
-            $("#pregunta4").removeClass("no-display");
+            $("#pregunta1").removeClass("no-display");
         });
     },
-    imagenes:["assets/img/plane.svg", "assets/img/ship.svg", "assets/img/bycicle.svg", "assets/img/bus.svg","assets/img/car.svg", "assets/img/truck.svg"],
     secciones: ["#pregunta1", "#pregunta2", "#pregunta3", "#pregunta4", "#pregunta5"]
 }
 
 // Función constructura
-
 function Pregunta (numero, pregunta, alternativas, correcta) {
     this.numero = numero;
     this.pregunta = pregunta;
@@ -34,20 +29,6 @@ function Pregunta (numero, pregunta, alternativas, correcta) {
         correcta: correcta
     }
 }
-
-// function ponerImagen (num){    
-//     let sectionImg = $("#imagen");
-//     let imagen = $("<img>", {
-//       "src": `${app.imagenes[num]}`,
-//     });
-//     sectionImg.append(imagen);
-// }
-
-// function ponerEstado (num){
-//     let divEstado = $("#estado");
-//     let estado = `${num} de 5 preguntas contestadas`
-//     divEstado.append(estado);
-// }
 
 $(document).ready(app.setup);
 
