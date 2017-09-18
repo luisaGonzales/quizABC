@@ -4,7 +4,7 @@
 const app = {
     preguntaActual: 0,
     respuestas: [undefined, undefined, undefined, undefined, undefined],
-    secciones: ["0", "pregunta1", "pregunta2", "pregunta3", "pregunta4", "pregunta5", "enviarRespuestas", "resumenFinal"],
+    secciones: ["inicio", "pregunta1", "pregunta2", "pregunta3", "pregunta4", "pregunta5", "enviarRespuestas", "resumenFinal"],
     correctas: [1, 0, 2, 0, 0],
     preguntas: {
         pregunta1: new Pregunta(1, `¿Cuál es la aerolínea más antigua del mundo?`, ["Avianca", "KLM", "Qantas"], "KLM"),
@@ -29,6 +29,9 @@ const app = {
         });
         $("atras").click(function(){
             app.volver();
+        });
+        $("adelante").click(function(){
+            app.avanzar();
         });
     },
     mostrarPregunta: function (sgtPregunta) {
@@ -118,12 +121,15 @@ const app = {
 
     },
     volver : function(){
-        alert("chi");
         $(`#${app.secciones[app.preguntaActual]}`).addClass("no-display");
         app.preguntaActual -= 1;
         $(`#${app.secciones[app.preguntaActual]}`).removeClass("no-display");
-        
         console.log(app.preguntaActual);
+    },
+    avanzar : function(){
+        $(`#${app.secciones[app.preguntaActual]}`).addClass("no-display");
+        app.preguntaActual += 1;
+        $(`#${app.secciones[app.preguntaActual]}`).removeClass("no-display");
     }
 }
 
