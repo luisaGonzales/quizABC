@@ -67,11 +67,6 @@ body {
     
 }
 
-.progress{
-    margin-bottom: 0 !important;
-    margin-top: 5% !important;
-}
-
 /* Botón */
 
 .btn-default {
@@ -98,6 +93,9 @@ body {
     padding: 5vw 0;
 }
 
+#resumenCompleto{
+    text-align: left !important;
+}
 
 /* Imagen */
 
@@ -118,6 +116,18 @@ body {
 .estado {
     text-align: left;
 }
+
+.progress{
+    margin-bottom: 0 !important;
+    margin-top: 5% !important;
+    height: 10px !important;
+}
+
+.progress-bar{
+    background-color: #423f5c !important;
+}
+
+
 
 
 /* Pregunta */
@@ -202,7 +212,7 @@ body {
     right: -20px;
 }
 
-#respuestas{
+#respuestas, #resumen{
     text-align: left !important;
     padding: 5vw;
 }
