@@ -1,0 +1,248 @@
+/* Colores a utilizar */
+
+
+/* background: #fff3ec;
+    Botón Info: #fc2088;
+    Botón Submit: #423f5c;
+    Opciones: #eae9ee;
+    Hover Opciones: #ccc9d5; */
+
+
+/* Estilo General */
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* Cuerpo */
+
+body {
+    background-color: #fff3ec;
+    color: #423f5c;
+}
+
+
+/* Clase */
+
+.no-display {
+    display: none;
+}
+
+
+/* Bienvenida */
+
+#inicio {
+    padding-top: 15%;
+}
+
+#inicio h1 {
+    font-weight: 700;
+}
+
+
+/* Icono de información */
+
+#informacion {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+}
+
+#informacion .fa-circle {
+    color: #fc2088;
+}
+
+#informacion .fa-info-circle {
+    color: white;
+}
+
+
+#atras{
+    position: absolute;
+    left: 300%;
+    z-index: 7;
+}
+
+#adelante{
+    position: absolute;
+    left: 340%;
+    z-index: 7;
+}
+
+/* Botón */
+
+.btn-default {
+    color: white !important;
+    background-color: #423f5c !important;
+    font-weight: bold;
+    text-align: center !important;
+}
+
+.btn-lg {
+    width: 50%;
+}
+
+#comenzar:hover {
+    background-color: #ccc9d5 !important;
+    color: #423f5c !important;
+}
+
+
+/* Pantalla en General */
+
+.quiz {
+    height: 95vh;
+    padding: 5vw 0;
+}
+
+#resumenCompleto{
+    text-align: left !important;
+}
+
+/* Imagen */
+
+.imagen {
+    width: 230px;
+}
+
+
+/* Contenido */
+
+.contenido {
+    margin-top: 20px;
+}
+
+
+/* Estado de preguntas */
+
+.estado {
+    text-align: left;
+}
+
+.progress{
+    margin-bottom: 0 !important;
+    margin-top: 5% !important;
+    height: 10px !important;
+}
+
+.progress-bar{
+    background-color: #423f5c !important;
+}
+/* Pregunta */
+
+.pregunta {
+    background-color: #fff;
+    padding: 5vw 5vw;
+    box-shadow: 0px 0px 25px #CEC3BA;
+}
+
+.titulo {
+    font-size: 1.8em;
+    margin: 3vw 1vw;
+    margin-bottom: 0;
+}
+
+.opciones {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+/* Botones */
+
+.btn {
+    text-align: left;
+}
+
+.btn-abc {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    transition: all .3s;
+}
+
+.btn-abc:hover {
+    background-color:  #ccc9d5; ;
+    transition: all .8s;
+}
+
+.abc {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 3px 8px 4px;
+    width: 25px;
+    height: 25px;
+    background-color: #423f5c;
+    color: #fff;
+    font-weight: 100;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+/* Seleccionado */
+
+.seleccion {
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    transition: 0.5s;
+}
+
+.seleccion:after {
+    position: absolute;
+    opacity: 0;
+    top: -20px;
+    right: -115px;
+    transition: 0.5s;
+    content: '\2713';
+}
+
+.btn-abc:hover .seleccion {
+    padding-right: -15px;
+}
+
+.btn-abc:active .seleccion:after {
+    color: white;
+}
+
+.btn-abc:hover .seleccion:after {
+    opacity: 1;
+    right: -20px;
+}
+
+#respuestas, #resumen{
+    text-align: left !important;
+    padding: 5vw;
+}
+
+.correcta {
+    color: #3c763d;
+}
+
+.incorrecta{
+    color: #af5250;
+}
+
+
+
+@media screen and (max-width: 1100px) {
+    .imagen {
+        width: 100px;
+    }
+    .contenido {
+        margin: 20px 30px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .estado {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width:1100px) {
+    .contenido {
+        margin: 20px 200px;
+    }
+}
