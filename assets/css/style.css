@@ -62,3 +62,9 @@ body{
     background-color: #ccc9d5 !important;
     color: #423f5c !important; 
 }
+
+/* Clase */
+
+.no-display{
+    display: none;
+}
